@@ -8,6 +8,7 @@ public abstract class BankAccount implements Account {
     protected int agency;
     protected int accountNumber;
     protected double balance = 0;
+    protected double amountInvested = 0;
 
     public BankAccount(Client client) {
         this.client = client;
@@ -27,6 +28,10 @@ public abstract class BankAccount implements Account {
         return balance;
     }
 
+    public double getAmountInvested() {
+        return amountInvested;
+    }
+
     @Override
     public void deposit(double amount) {
         balance += amount;
@@ -35,6 +40,12 @@ public abstract class BankAccount implements Account {
     @Override
     public void withdraw(double amount) {
         balance -= amount;
+    }
+
+    @Override
+    public void invest(double amount) {
+        this.withdraw(amount);
+        amountInvested = amount;
     }
 
     @Override
@@ -50,7 +61,9 @@ public abstract class BankAccount implements Account {
         System.out.println("Titular: " + client.getClientName());
         System.out.printf("Agencia: %d%n", agency);
         System.out.printf("Numero da Conta: %d%n", accountNumber);
-        System.out.printf("Balance: %.2f ", balance);
-        System.out.println();
+        System.out.printf("Saldo: %.2f ", balance);
+        System.out.println(" ");
+        System.out.printf("Investimento: %.2f", amountInvested);
+        System.out.println(" ");
     }
 }

@@ -11,6 +11,7 @@ public class Main {
         currentAccount.deposit(100);
         currentAccount.withdraw(50);
         currentAccount.transfer(25, savingsAccount);
+        currentAccount.invest(25);
 
         currentAccount.printStatement();
         savingsAccount.printStatement();
