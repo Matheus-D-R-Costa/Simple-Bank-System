@@ -1,4 +1,6 @@
-public class CurrentAccount extends BankAccount{
+package model;
+
+public class CurrentAccount extends BankAccount {
 
     public CurrentAccount(Client client) {
         super(client);

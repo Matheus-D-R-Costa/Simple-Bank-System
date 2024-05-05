@@ -1,11 +1,13 @@
+package model;
+
 public abstract class BankAccount implements Account {
 
-    private static final int DEFAULT_AGENCY = 0001;
+    private static final String DEFAULT_AGENCY = "0001";
     private static int sequential = 1;
 
     protected Client client;
 
-    protected int agency;
+    protected String agency;
     protected int accountNumber;
     protected double balance = 0;
     protected double amountInvested = 0;
@@ -16,7 +18,7 @@ public abstract class BankAccount implements Account {
         this.accountNumber = sequential++;
     }
 
-    public int getAgency() {
+    public String getAgency() {
         return agency;
     }
 
@@ -59,7 +61,7 @@ public abstract class BankAccount implements Account {
 
         System.out.println("=== Extrato Conta ===");
         System.out.println("Titular: " + client.getClientName());
-        System.out.printf("Agencia: %d%n", agency);
+        System.out.println("Agencia:" + agency);
         System.out.printf("Numero da Conta: %d%n", accountNumber);
         System.out.printf("Saldo: %.2f ", balance);
         System.out.println(" ");

@@ -1,3 +1,8 @@
+import model.BankAccount;
+import model.Client;
+import model.CurrentAccount;
+import model.SavingsAccount;
+
 public class Main {
 
     public static void main(String[] args) {
