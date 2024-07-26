@@ -27,13 +27,13 @@ public class AccountModel {
     private BigDecimal balance;
 
     @Column(precision = 13, scale = 2)
-    private BigDecimal AccountLimit;
+    private BigDecimal accountLimit;
 
     @ManyToOne
     @JoinColumn(name = "userId")
     private UserModel user;
 
-    @OneToMany(mappedBy = "account",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true ,fetch = FetchType.EAGER)
     private List<CardModel> cards = new ArrayList<>();
 
     @ManyToMany
@@ -42,7 +42,7 @@ public class AccountModel {
             joinColumns = @JoinColumn(name = "accountId"),
             inverseJoinColumns = @JoinColumn(name = "featureId")
     )
-    private List<FeatureModel> features;
+    private List<FeatureModel> features = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(
@@ -50,7 +50,7 @@ public class AccountModel {
             joinColumns = @JoinColumn(name = "accountId"),
             inverseJoinColumns = @JoinColumn(name = "newId")
     )
-    private List<NewsModel> news;
+    private List<NewsModel> news = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -85,11 +85,11 @@ public class AccountModel {
     }
 
     public BigDecimal getAccountLimit() {
-        return AccountLimit;
+        return accountLimit;
     }
 
-    public void setAccountLimit(BigDecimal AccountLimit) {
-        this.AccountLimit = AccountLimit;
+    public void setAccountLimit(BigDecimal accountLimit) {
+        this.accountLimit = accountLimit;
     }
 
     public UserModel getUser() {
@@ -123,4 +123,5 @@ public class AccountModel {
     public void setNews(List<NewsModel> news) {
         this.news = news;
     }
+
 }

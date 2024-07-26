@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.math.BigDecimal;
 
+
 @Entity(name = "cards")
 public class CardModel {
 
@@ -16,10 +17,10 @@ public class CardModel {
     private String number;
 
     @Column(precision = 13, scale = 2)
-    private BigDecimal CardLimit;
+    private BigDecimal cardLimit;
 
     @ManyToOne
-    @JoinColumn(name = "AccountId")
+    @JoinColumn(name = "accountId")
     private AccountModel account;
 
     public Integer getId() {
@@ -38,12 +39,12 @@ public class CardModel {
         this.number = number;
     }
 
-    public BigDecimal getCardLimit() {
-        return CardLimit;
+    public BigDecimal getcardLimit() {
+        return cardLimit;
     }
 
-    public void setCardLimit(BigDecimal CardLimit) {
-        this.CardLimit = CardLimit;
+    public void setCardLimit(BigDecimal cardLimit) {
+        this.cardLimit = cardLimit;
     }
 
     public AccountModel getAccount() {
@@ -53,4 +54,5 @@ public class CardModel {
     public void setAccount(AccountModel account) {
         this.account = account;
     }
+
 }

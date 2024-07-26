@@ -1,9 +1,9 @@
 package com.simple.bank_system.models.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import com.simple.bank_system.models.account.AccountModel;
 import jakarta.persistence.*;
-
 import java.util.HashSet;
 import java.util.Set;
 
@@ -18,7 +18,7 @@ public class UserModel {
     private String username;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     private Set<AccountModel> accounts = new HashSet<>();
 
     public Set<AccountModel> getAccounts() {
@@ -44,4 +44,5 @@ public class UserModel {
     public void setId(Integer id) {
         this.id = id;
     }
+
 }
