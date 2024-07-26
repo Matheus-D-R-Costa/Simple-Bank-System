@@ -20,7 +20,7 @@ public class AccountModel {
     @Column(unique = true)
     private String number;
 
-    @Column(unique = true)
+    @Column
     private String agency;
 
     @Column(precision = 13, scale = 2)
@@ -36,7 +36,7 @@ public class AccountModel {
     @OneToMany(mappedBy = "account", cascade = CascadeType.ALL, orphanRemoval = true ,fetch = FetchType.EAGER)
     private List<CardModel> cards = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "accountFeatures",
             joinColumns = @JoinColumn(name = "accountId"),
@@ -44,7 +44,7 @@ public class AccountModel {
     )
     private List<FeatureModel> features = new ArrayList<>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "accountNews",
             joinColumns = @JoinColumn(name = "accountId"),
